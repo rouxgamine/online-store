@@ -1,7 +1,11 @@
 import { useState } from 'react'
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import * as userService from '../../utilities/users-service'
 
 export default function LoginForm ({ setUser }) {
+  const [queryParameters] = useSearchParams();
+  const navigate = useNavigate();
+
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -18,6 +22,7 @@ export default function LoginForm ({ setUser }) {
     try {
       const user = await userService.login(credentials)
       setUser(user)
+      navigate(queryParameters.get("referral") ? queryParameters.get("referral") : "/orders/new")
     } catch (error) {
       setError(error.message)
     }

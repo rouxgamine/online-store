@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Logo() {
 return (
-  <Link to="/orders/new" className={styles.Logo}>COFFEE SHOP</Link>
+  <Link to="/orders/new"><img className={styles.Logo} src='https://i.imgur.com/ZKmyeOW.png' alt='COFFEE SHOP' /></Link>
 
-  // <div className={styles.Logo}>
-  //   <div>Coffee</div>
-  //   <div>Shop</div>
-  // </div>
 )
 }

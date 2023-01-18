@@ -1,16 +1,20 @@
 .LineItem {
     width: 100%;
-    display: grid;
-    grid-template-columns: 3vw 15.35vw 5.75vw 5.25vw;
+    display:grid;
+    grid-template-columns: 7vw 15.35vw 5.75vw 5.25vw;
     padding: 1vmin 0;
     color: var(--text-light);
     background-color: var(--white);
     border-top: .1vmin solid var(--tan-3);
-    font-size: 1.5vw;
+    font-size: 1.4vw;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
     }
     .LineItem .image {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
         height: 8vw;
-        width: 8vw;
+        width: 9vw;
         font-size: 4vw;
         background-color: var(--tan-1);
         border: .1vmin solid var(--tan-3);

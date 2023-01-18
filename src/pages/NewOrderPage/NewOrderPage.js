@@ -16,7 +16,7 @@ export default function NewOrderPage({ user, setUser }) {
   const categoriesRef = useRef([]);
   const navigate = useNavigate();
 
-  useEffect(function() {
+  useEffect(function () {
     async function getItems() {
       const items = await itemsAPI.getAll();
       categoriesRef.current = items.reduce((cats, item) => {
@@ -27,11 +27,13 @@ export default function NewOrderPage({ user, setUser }) {
       setActiveCat(categoriesRef.current[0]);
     }
     getItems();
-    async function getCart() {
-      const cart = await ordersAPI.getCart();
-      setCart(cart);
+    if (user) {
+      async function getCart() {
+        const cart = await ordersAPI.getCart();
+        setCart(cart);
+      }
+      getCart();
     }
-    getCart();
   }, []);
   // Providing an empty 'dependency array'
   // results in the effect running after
@@ -39,8 +41,12 @@ export default function NewOrderPage({ user, setUser }) {
 
   /*-- Event Handlers --*/
   async function handleAddToOrder(itemId) {
-    const updatedCart = await ordersAPI.addItemToCart(itemId);
-    setCart(updatedCart);
+    if (user) {
+      const updatedCart = await ordersAPI.addItemToCart(itemId);
+      setCart(updatedCart);
+    } else {
+      navigate('/login?referral=/orders/new');
+    }
   }
 
   async function handleChangeQty(itemId, newQty) {
@@ -62,8 +68,12 @@ export default function NewOrderPage({ user, setUser }) {
           cart={setCart}
           setActiveCat={setActiveCat}
         />
-        <Link to="/orders" className="button btn-sm">PREVIOUS ORDERS</Link>
-        <UserLogOut user={user} setUser={setUser} />
+        {user &&
+          <>
+            <Link to="/orders" className="button btn-sm">PREVIOUS ORDERS</Link>
+            <UserLogOut user={user} setUser={setUser} />
+          </>
+        }
       </aside>
       <MenuList
         menuItems={menuItems.filter(item => item.category.name === activeCat)}

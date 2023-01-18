@@ -2,24 +2,25 @@
     color: var(--text-light);
     list-style: none;
     padding: 0;
+    margin-top: 20%;
     font-size: 1.7vw;
-    }
-    
-    .CategoryList li {
+}
+
+.CategoryList li {
     padding: .6vmin;
     text-align: center;
     border-radius: .5vmin;
     margin-bottom: .5vmin;
-    }
-    
-    .CategoryList li:hover:not(.active) {
+}
+
+.CategoryList li:hover:not(.active) {
     cursor: pointer;
-    background-color: violet;
-    color: purple
-    }
-    
-    .CategoryList li.active {
+    background-color: lightgray;
+    color: black
+}
+
+.CategoryList li.active {
     color: var(--text-dark);
     background-color: var(--tan-1);
     border: .1vmin solid var(--tan-3);
-    }
+}
