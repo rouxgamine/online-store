@@ -19,7 +19,7 @@ CRUD, REST, JSX, React, Express, Mongoose, MongoDB, HTML, CSS, SCSS, JavaScript
 
 ### Wireframes ###
 <br>
-![image](public/wireframe_coffee_shop.png.png)
+![image](public/wireframe_coffee_shop.png)
 
 
 <br>
