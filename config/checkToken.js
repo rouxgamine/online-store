@@ -9,9 +9,11 @@ module.exports = (req, res, next) => {
     // Check if token is valid and not expired
     jwt.verify(token, process.env.SECRET, function (err, decoded) {
       req.user = err ? null : decoded.user
+      // req.aloha = "123"
       // Can remove this...
       // If your app doesn't care
       req.exp = err ? null : new Date(decoded.exp * 1000)
+      console.log(req)
     })
     return next()
   } else {
